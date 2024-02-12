@@ -6,7 +6,7 @@ import HeadingSection from './../Component/HeadingSection'
 
 export default function CourseStart({course}) {
   return course&&(
-    <View style={{padding:5,backgroundColor:'#e6e6e6',borderRadius:4}}>
+    <View style={{padding:5,backgroundColor:'#e6e6e6',borderRadius:5,marginTop:10}}>
       <Video
         shouldPlay={true}
         style={styles.video}

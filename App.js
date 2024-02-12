@@ -10,7 +10,11 @@ import HomeNavigation from './App/Navigation/HomeNavigation';
 
 
 export const AuthContext=createContext();
+export const userDeatailsContext=createContext();
+
 export default function App() {
+
+  const [userDetail,setUserDetail]=useState();
 
   const [fontsLoaded, fontError] = useFonts({
     'PTSerif-Bold': require('./App/Assets/fonts/PTSerif-Bold.ttf'),
@@ -28,8 +32,8 @@ export default function App() {
   const checkAuthenticate = async () => {
     // Using `isAuthenticated` to check if the user is authenticated or not
     if (await client.isAuthenticated) {
-
         const userProfile = await client.getUserDetails();
+        setUserDetail(userProfile)
         setAuth(true)
         // console.log(userProfile);
         // console.log('Authenticated')
@@ -44,9 +48,11 @@ export default function App() {
     <View style={styles.container}>
         {/* <Login/> */}
         <AuthContext.Provider value={{auth, setAuth}}>
-        <NavigationContainer>
-          {auth ?<HomeNavigation/> : <Login/>}
-        </NavigationContainer>
+          <userDeatailsContext.Provider value={{userDetail,setUserDetail}}>
+            <NavigationContainer>
+              {auth ?<HomeNavigation/> : <Login/>}
+            </NavigationContainer>
+        </userDeatailsContext.Provider>
         </AuthContext.Provider>
     </View>
   )

@@ -56,8 +56,34 @@ const getCourseList= async ()=>{
 
 }
 
+
+const checkUserCourseEntrollment= async(slug, email)=>{
+
+  const query=gql `
+  
+  query MyQuery {
+    userEntrollCourses(where: {courseId: "`+slug+`", userEmail: "`+email+`"}) {
+      completedChapter {
+        ... on CompletedChapter {
+          id
+        }
+      }
+      courseId
+      id
+    }
+  }
+  
+  
+  `
+
+  const result=await request(MASTER_URL,query);
+  return result;
+
+}
+
 export default {
   getCategory,
-  getCourseList
+  getCourseList,
+  checkUserCourseEntrollment
 
 }

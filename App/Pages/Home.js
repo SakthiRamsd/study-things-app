@@ -61,8 +61,10 @@ const getFilterCourseList=(tag)=>{
       <CategoryList categories={categories}/>
 
       {/* Course List */}
+      <View style={{marginTop:12}}>
       <HeadingSection heading={'Latest Course'}/>
       <CourseList courseList={courseList}/>
+      </View>
 
       {/*HTML Course List */}
       <HeadingSection heading={'HTML Course'}/>
