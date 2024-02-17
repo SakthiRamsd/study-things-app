@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 function Profile() {
   return (
     <View>
-    <Text>Home</Text>
+    <Text>Profile</Text>
    </View>
   )
 }

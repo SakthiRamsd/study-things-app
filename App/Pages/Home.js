@@ -5,7 +5,6 @@ import { AuthContext } from '../../App';
 import Header from '../Component/Header';
 import GlobalApi from './../Shared/GlobalApi'
 import CategoryList from '../Component/CategoryList';
-import HeadingSection from '../Component/HeadingSection';
 import CourseList from '../Component/CourseList';
 import { ScrollView } from 'react-native';
 import CourseListVertical from '../Component/CourseListVertical';
@@ -13,78 +12,79 @@ import CourseListVertical from '../Component/CourseListVertical';
 
 function Home() {
 
-  const {auth,setAuth} = useContext(AuthContext)
+  const { auth, setAuth } = useContext(AuthContext)
+  const [categories, setCategories] = useState();
+  const [courseList, setCourseList] = useState([]);
 
-  const [categories,setCategories] = useState();
-
-  const [courseList,setCourseList] = useState([]);
-
-  useEffect(()=>{
+  useEffect(() => {
     getCategory();
     getCourseList();
   }, []);
 
-
   //Get Category List
-  const getCategory =()=>{
-    GlobalApi.getCategory().then(resp=>{
+  const getCategory = () => {
+    GlobalApi.getCategory().then(resp => {
       setCategories(resp.categories);
     })
   };
 
-  const getCourseList =() =>{
-    GlobalApi.getCourseList().then(resp=>{
+  const getCourseList = () => {
+    GlobalApi.getCourseList().then(resp => {
       setCourseList(resp?.courseLists)
       console.log(resp)
     })
-  } 
-
+  }
 
   const handleLogout = async () => {
     const loggedOut = await client.logout();
     if (loggedOut) {
       setAuth(false)
-        // User was logged out
+      // User was logged out
     }
-};
+  };
 
-const getFilterCourseList=(tag)=>{
-  const result =courseList.filter((item)=>item.tag.includes(tag));
-  return result
-}
+  const getFilterCourseList = (tag) => {
+    const result = courseList.filter((item) => item.tag.includes(tag));
+    return result
+  }
 
   return (
-   <ScrollView style={styles.home}>
-      <Header/>
+    <ScrollView style={styles.home}>
+
+      <Header />
 
       {/* Category List */}
-      <CategoryList categories={categories}/>
+      <CategoryList categories={categories} />
 
       {/* Course List */}
-      <View style={{marginTop:12}}>
-      <HeadingSection heading={'Latest Course'}/>
-      <CourseList courseList={courseList}/>
+      <View style={{backgroundColor:'#999999', color:'white',borderRadius:8,marginTop:16,padding:9,margin:4}}>
+      <Text style={{fontSize:22, color:'white',fontWeight:'bold',}}>Latest Cousre</Text>
       </View>
+      <CourseList courseList={courseList} />
 
       {/*HTML Course List */}
-      <HeadingSection heading={'HTML Course'}/>
-      <CourseList courseList={getFilterCourseList('HTML')}/>
+      <View style={{backgroundColor:'#999999', color:'white',borderRadius:8,marginTop:10,padding:10,margin:4}}>
+      <Text style={{fontSize:22, color:'white',fontWeight:'bold',}}>HTML Course</Text>
+      </View>
+      <CourseList courseList={getFilterCourseList('HTML')} />
 
       {/*All Course List */}
-      <HeadingSection heading={'All Course'}/>
-      <CourseListVertical courseList={courseList}/>
-
-   </ScrollView>
+      <View style={{backgroundColor:'#999999', color:'white',borderRadius:8,marginTop:10,padding:10,margin:4}}>
+      <Text style={{fontSize:22, color:'white',fontWeight:'bold',}}>All Course</Text>
+      </View>
+      
+      <CourseListVertical courseList={courseList} />
+    </ScrollView>
   )
 }
 
-const styles=StyleSheet.create({
-  btn:{
-    paddingTop:60,
-    color:'red',
+const styles = StyleSheet.create({
+  btn: {
+    paddingTop: 60,
+    color: 'red',
   },
-  home:{
-    backgroundColor:'whitesmoke'
+  home: {
+    backgroundColor: '#d9d9d9'
   }
 })
 

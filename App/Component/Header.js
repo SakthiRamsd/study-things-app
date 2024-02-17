@@ -6,73 +6,73 @@ import { FontAwesome } from '@expo/vector-icons';
 
 function Header() {
 
-    const [userDetail,setUserDetail] = useState();
-    useEffect(()=>{
+    const [userDetail, setUserDetail] = useState();
+    useEffect(() => {
         getUserDetails();
     }, [])
 
-    const getUserDetails = async () =>{
-            const user = await client.getUserDetails();
-            setUserDetail(user)
+    const getUserDetails = async () => {
+        const user = await client.getUserDetails();
+        setUserDetail(user)
     }
-  return (
-    <>
-   <View style={styles.view}>
-    
-    <Image source={{uri:userDetail?.picture}}
-        style={styles.img}
-    />
-    <View>
-        <Text style={styles.text1}>Welcome</Text>
-        <Text style={styles.text2}>Hello, {userDetail?.given_name}</Text>
-    </View>
-   </View>
 
-    <View style={styles.input}>
-        <FontAwesome name="search" size={24} color="gray" />
-        <TextInput style={{fontFamily:'PTSerif-Regular'}} placeholder='Search Here'/>
-    </View>
+    return (
+        <>
+            <View style={styles.view}>
 
-   </>
-  )
+                <Image source={{ uri: userDetail?.picture }}
+                    style={styles.img}
+                />
+                <View>
+                    <Text style={styles.text1}>Welcome</Text>
+                    <Text style={styles.text2}>Hello, {userDetail?.given_name}</Text>
+                </View>
+            </View>
+
+            <View style={styles.input}>
+                <FontAwesome name="search" size={24} color="gray" />
+                <TextInput style={{ fontWeight:'normal' }} placeholder='Search Here' />
+            </View>
+        </>
+    )
 }
 
 const styles = StyleSheet.create({
-    img:{
-        width:40, 
-        height:40,
-        borderRadius:20,
-        
+    img: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
     },
-    view:{
-        paddingTop:20,
-        marginTop:25,
-        paddingLeft:10,
-        display:'flex',
-        flexDirection:'row',
-        gap:5,
-        alignItems:'center'
+    view: {
+        paddingTop: 20,
+        marginTop: 25,
+        paddingLeft: 10,
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 5,
+        alignItems: 'center'
     },
-    text1:{
-        fontSize:10,
-        fontFamily:'PTSerif-Bold',
+    text1: {
+        fontSize: 18,
+        fontWeight:'bold',
     },
-    text2:{
-        fontSize:13,
-        color:'#0066cc',
-        fontFamily:'PTSerif-BoldItalic'
+    text2: {
+        fontSize: 13,
+        color: '#0066cc',
+        fontWeight:'500'
     },
-    input:{
-        backgroundColor:'whitesmoke',
-        padding:15,
-        borderRadius:60,
+    input: {
+        backgroundColor: 'whitesmoke',
+        padding: 15,
+        borderRadius: 60,
         marginTop:15,
-        paddingHorizontal:20,
-        display:'flex',
-        flexDirection:'row',
-        gap:7,
-        borderWidth:0.1,
-        borderColor:'red'
+        margin: 5,
+        paddingHorizontal: 20,
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 7,
+        borderWidth: 0.5,
+        borderColor: 'black'
     }
 })
 
