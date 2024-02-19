@@ -30,7 +30,7 @@ function Header() {
             </View>
 
             <View style={styles.input}>
-                <FontAwesome name="search" size={24} color="gray" />
+                <FontAwesome name="search" size={24} color="black" />
                 <TextInput style={{ fontWeight:'normal' }} placeholder='Search Here' />
             </View>
         </>
@@ -39,9 +39,9 @@ function Header() {
 
 const styles = StyleSheet.create({
     img: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
+        width: 50,
+        height: 50,
+        borderRadius: 50
     },
     view: {
         paddingTop: 20,
@@ -53,18 +53,18 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     text1: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight:'bold',
     },
     text2: {
         fontSize: 13,
-        color: '#0066cc',
+        color: '#ff3300',
         fontWeight:'500'
     },
     input: {
-        backgroundColor: 'whitesmoke',
+        backgroundColor: '#ffffff',
         padding: 15,
-        borderRadius: 60,
+        borderRadius: 20,
         marginTop:15,
         margin: 5,
         paddingHorizontal: 20,

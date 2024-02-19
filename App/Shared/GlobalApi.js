@@ -11,6 +11,7 @@ query MyQuery {
     icon {
       url
     }
+    slug
   }
 }
   `
@@ -108,6 +109,7 @@ const markChapterCompleted = async (recordId, chapterId) => {
   return result;
 }
 
+// Get All Users Enroll Courses
 const getAllUserEntrollCourses = async(email)=>{
     const query = gql`
     

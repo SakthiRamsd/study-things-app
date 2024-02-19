@@ -4,10 +4,12 @@ import { FontAwesome } from '@expo/vector-icons';
 import { client } from './../Shared/KindConfig';
 import { AuthContext } from '../../App';
 
+
 function Login() {
 
 
   const { auth, setAuth } = useContext(AuthContext);
+ 
   const handleSignUp = async () => {
     const token = await client.register();
     if (token) {

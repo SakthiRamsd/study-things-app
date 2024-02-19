@@ -30,7 +30,7 @@ function TabNavigation() {
                         <FontAwesome name="book" size={22} color={color} />
                     ),
                     tabBarLabel: ({ color }) => (
-                        <Text style={{ color: color, fontSize: 12 }}>COURSE</Text>
+                        <Text style={{ color: color, fontSize: 12 }}>MY COURSE</Text>
                     ),
                 }} />
 

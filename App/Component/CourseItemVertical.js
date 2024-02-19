@@ -10,7 +10,7 @@ export default function CourseItemVertical({ course }) {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('course-details', { course: course })}
-      style={{ backgroundColor: 'white', padding: 10, width: 340, borderRadius: 10, margin: 10, gap: 8, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+      style={{ backgroundColor: '#f2f2f2', padding: 10, width: 340, borderRadius: 10, margin: 10, gap: 8, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
       <Image source={{ uri: course?.banner?.url }}
         style={{ width: 150, height: 80, borderRadius: 5 }} />

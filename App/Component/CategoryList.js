@@ -3,14 +3,15 @@ import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-native'
 
 
-function CategoryList({ categories }) {
+function CategoryList({ categories, setSelectedCategory }) {
 
   const [activeIndex, setActiveIndex] = useState();
 
+
   return (
-    <View style={{ marginTop: 3 }}>
-      <View style={{ backgroundColor: '#999999', color: 'white', borderRadius: 8, margin: 4, padding: 10, marginBottom: 13, marginTop: 8 }}>
-        <Text style={{ fontSize: 22, color: 'white', fontWeight: 'bold', }}>Categories</Text>
+    <View style={{marginLeft:3}}>
+      <View style={{color: 'black', borderRadius: 8, padding: 10, marginBottom: 13, marginTop: 2}}>
+        <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold'}}>Category</Text>
       </View>
 
       <FlatList
@@ -18,11 +19,14 @@ function CategoryList({ categories }) {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => (
-           <TouchableOpacity style={[styles.container, activeIndex == index && { borderWidth: 1, borderColor: 'black' }]}
-            onPress={() => { setActiveIndex(index) }} >
+           <TouchableOpacity style={[styles.container, activeIndex == index && { backgroundColor:'#f2f2f2',borderWidth: 1, borderColor: '#808080', }]}
+            onPress={() => { setActiveIndex(index);
+              setSelectedCategory(item.slug)
+             }}
+            >
             <Image source={{ uri: item?.icon?.url }}
               style={{ width: 45, height: 45 }} />
-              
+
             <Text style={{ fontSize: 13, textAlign: 'center', marginTop: 4, color: 'black' }}>{item?.name}</Text>
           </TouchableOpacity>
         )}
@@ -33,7 +37,7 @@ function CategoryList({ categories }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#f2f2f2',
     padding: 15,
     marginRight: 10,
     alignItems: 'center',

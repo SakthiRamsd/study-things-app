@@ -15,6 +15,7 @@ function Home() {
   const { auth, setAuth } = useContext(AuthContext)
   const [categories, setCategories] = useState();
   const [courseList, setCourseList] = useState([]);
+  const [orgCourseList, setOrgCourseList] = useState([]);
 
   useEffect(() => {
     getCategory();
@@ -31,7 +32,7 @@ function Home() {
   const getCourseList = () => {
     GlobalApi.getCourseList().then(resp => {
       setCourseList(resp?.courseLists)
-      console.log(resp)
+      setOrgCourseList(resp?.courseList)
     })
   }
 
@@ -44,8 +45,20 @@ function Home() {
   };
 
   const getFilterCourseList = (tag) => {
-    const result = courseList.filter((item) => item.tag.includes(tag));
-    return result
+  if (courseList) {
+    return courseList.filter((item) => item.tag.includes(tag));
+  }
+  return [];
+}
+
+  const filterCourseList = (category) => {
+    if (orgCourseList) {
+      const result = orgCourseList.filter((item) => item.tag.includes(category));
+      setCourseList(result);
+    }
+    else{
+    console.log("No Found")
+    }
   }
 
   return (
@@ -54,23 +67,24 @@ function Home() {
       <Header />
 
       {/* Category List */}
-      <CategoryList categories={categories} />
+      <CategoryList categories={categories}
+      setSelectedCategory={(category)=>filterCourseList(category)} />
 
       {/* Course List */}
-      <View style={{backgroundColor:'#999999', color:'white',borderRadius:8,marginTop:16,padding:9,margin:4}}>
-      <Text style={{fontSize:22, color:'white',fontWeight:'bold',}}>Latest Cousre</Text>
+      <View style={{color:'black',borderRadius:8,marginTop:16,padding:9,margin:4}}>
+      <Text style={{fontSize:22, color:'black',fontWeight:'bold',}}>Latest Cousre</Text>
       </View>
       <CourseList courseList={courseList} />
 
       {/*HTML Course List */}
-      <View style={{backgroundColor:'#999999', color:'white',borderRadius:8,marginTop:10,padding:10,margin:4}}>
-      <Text style={{fontSize:22, color:'white',fontWeight:'bold',}}>HTML Course</Text>
+      <View style={{ color:'black',borderRadius:8,marginTop:10,padding:10,margin:4}}>
+      <Text style={{fontSize:22, color:'black',fontWeight:'bold',}}>HTML Course</Text>
       </View>
       <CourseList courseList={getFilterCourseList('HTML')} />
 
       {/*All Course List */}
-      <View style={{backgroundColor:'#999999', color:'white',borderRadius:8,marginTop:10,padding:10,margin:4}}>
-      <Text style={{fontSize:22, color:'white',fontWeight:'bold',}}>All Course</Text>
+      <View style={{ color:'black',borderRadius:8,marginTop:10,padding:10,margin:4}}>
+      <Text style={{fontSize:22, color:'black',fontWeight:'bold',}}>All Course</Text>
       </View>
       
       <CourseListVertical courseList={courseList} />
@@ -84,7 +98,7 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   home: {
-    backgroundColor: '#d9d9d9'
+    backgroundColor: 'white'
   }
 })
 
