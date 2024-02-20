@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons';
@@ -25,12 +25,12 @@ export default function CourseDetails() {
   useEffect(() => {
     reload && checkIsUserEntrollToCourse();
   }, [reload])
- 
+
   // Check the User Enroll Course
   const checkIsUserEntrollToCourse = (course) => {
     course && GlobalApi.checkUserCourseEntrollment(course?.slug, userDetail?.email).then(resp => {
-      // console.log("checkUserEntrolltoCourse :", resp);
-      setUserEntrollment(resp.userEntrollCourses);
+      console.log("checkUserEntrolltoCourse :", resp);
+      setUserEntrollment(resp?.userEntrollCourses);
     })
   }
 
@@ -41,7 +41,7 @@ export default function CourseDetails() {
       if (resp) {
         Alert.alert('You are Successfully Entroll this Course!');
         checkIsUserEntrollToCourse(course);
-      } 
+      }
     })
   }
 
@@ -52,13 +52,13 @@ export default function CourseDetails() {
           <Ionicons name="chevron-back-circle-sharp" size={45} color="black" />
         </TouchableOpacity>
 
-        <Text style={{ fontWeight:'bold', fontSize: 20, color: 'black', marginLeft:-10 }}>Course Details</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black', marginLeft: -10 }}>Course Details</Text>
       </View>
 
-      <CourseStart course={course}/>
+      <CourseStart course={course} />
 
       {/* Entrollment Section */}
-      <EntrollSection 
+      <EntrollSection
         course={course}
         userEntrollment={userEntrollment}
         onEntrollmentPress={() => onEntrollmentPress()}

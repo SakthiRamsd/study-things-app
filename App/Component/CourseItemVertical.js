@@ -10,7 +10,7 @@ export default function CourseItemVertical({ course }) {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('course-details', { course: course })}
-      style={{ backgroundColor: '#f2f2f2', padding: 10, width: 340, borderRadius: 10, margin: 10, gap: 8, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+      style={{ backgroundColor: 'white', padding: 13, width: 340, borderTopLeftRadius: 50, borderBottomRightRadius: 50, margin: 10, gap: 8, display: 'flex', flexDirection: 'row', alignItems: 'center', borderWidth: 3, borderColor: '#80bfff', borderTopWidth: 13, borderRightWidth: 13 }}>
 
       <Image source={{ uri: course?.banner?.url }}
         style={{ width: 150, height: 80, borderRadius: 5 }} />
@@ -18,12 +18,12 @@ export default function CourseItemVertical({ course }) {
       <View style={{ justifyContent: 'center', flexShrink: 2, gap: 4 }}>
         <Text style={{ color: 'black', fontSize: 12.5, fontWeight: 'bold' }}>{course.name}</Text>
         <Text style={{ color: 'black', fontSize: 13, fontStyle: 'italic' }}>{course.author}</Text>
-        
+
         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <FontAwesome5 name="book-open" size={18} color="black" />
           <Text style={{ fontWeight: 'bold', color: 'black' }}>{course.course ? 'Course' : 'Project'}</Text>
         </View>
-        
+
       </View>
 
     </TouchableOpacity>

@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet } from 'react-native'
+import { View, FlatList } from 'react-native'
 import React from 'react'
 import CourseItem from './CourseItem'
 

@@ -10,7 +10,7 @@ function CourseItem({ course }) {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('course-details', { course: course })}
-      style={{ backgroundColor: '#cccccc', width: 280, height: 280, padding: 20, borderTopLeftRadius: 30,borderBottomRightRadius:30, margin: 10, gap: 5, }} >
+      style={{ backgroundColor: '#e6f2ff', width: 280, height: 280, padding: 20, borderWidth: 1, borderTopLeftRadius: 55, borderBottomRightRadius: 55, margin: 10, gap: 5, borderColor: '#80bfff', borderLeftWidth: 14, borderStartColor:'#80bfff' }} >
 
       <Image source={{ uri: course?.banner?.url }}
         style={{ width: '100%', height: 130, borderRadius: 10 }} />

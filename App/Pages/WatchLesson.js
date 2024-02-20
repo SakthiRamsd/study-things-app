@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, ToastAndroid } from 'react-native'
+import { View, Text, TouchableOpacity, ToastAndroid } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { Video, ResizeMode } from 'expo-av';
 import { useNavigation, useRoute } from '@react-navigation/native'
@@ -25,7 +25,7 @@ export default function WatchLesson() {
   // onChapterComplete Function
   const onChapterCompleted = () => {
     GlobalApi.markChapterCompleted(userEntrollment[0]?.id, selectedChapter?.id).then(resp => {
-      console.log("--", resp)
+      console.log("Completed Chapter :", resp)
       setReload("Update Entrollment")
       ToastAndroid.show("Chapter Mark Completed", ToastAndroid.SHORT);
     })

@@ -1,93 +1,95 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
-import { client } from '../Shared/KindConfig';
-import { AuthContext } from '../../App';
+import React, { useEffect, useState } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 import Header from '../Component/Header';
 import GlobalApi from './../Shared/GlobalApi'
 import CategoryList from '../Component/CategoryList';
 import CourseList from '../Component/CourseList';
 import { ScrollView } from 'react-native';
 import CourseListVertical from '../Component/CourseListVertical';
+import { TextInput } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 function Home() {
 
-  const { auth, setAuth } = useContext(AuthContext)
   const [categories, setCategories] = useState();
   const [courseList, setCourseList] = useState([]);
-  const [orgCourseList, setOrgCourseList] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+
 
   useEffect(() => {
     getCategory();
     getCourseList();
   }, []);
 
-  //Get Category List
+  //Get Category List Function
   const getCategory = () => {
     GlobalApi.getCategory().then(resp => {
       setCategories(resp.categories);
     })
   };
 
+  // Get Course List Function
   const getCourseList = () => {
     GlobalApi.getCourseList().then(resp => {
-      setCourseList(resp?.courseLists)
-      setOrgCourseList(resp?.courseList)
+      console.log(resp)
+      setCourseList(resp.courseLists)
     })
   }
 
-  const handleLogout = async () => {
-    const loggedOut = await client.logout();
-    if (loggedOut) {
-      setAuth(false)
-      // User was logged out
-    }
+  // Get Filter Course List Function //
+  // const getFilterCourseList = (tag) => {
+  //   if (courseList) {
+  //     return courseList.filter((item) => item.tag.includes(tag));
+  //   }
+  //   return [];
+  // }
+
+  const getFilteredCourseList = () => {
+  return courseList.filter((item) =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   };
 
-  const getFilterCourseList = (tag) => {
-  if (courseList) {
-    return courseList.filter((item) => item.tag.includes(tag));
-  }
-  return [];
-}
-
-  const filterCourseList = (category) => {
-    if (orgCourseList) {
-      const result = orgCourseList.filter((item) => item.tag.includes(category));
-      setCourseList(result);
-    }
-    else{
-    console.log("No Found")
-    }
-  }
 
   return (
+
     <ScrollView style={styles.home}>
 
       <Header />
 
+      <View style={styles.input}>
+        <FontAwesome name="search" size={24} color="black" />
+        <TextInput style={{ fontWeight: 'normal', color: 'black' }}
+          placeholder='Search Here'  value={searchQuery}
+          onChangeText={(text) => setSearchQuery(text)} />
+      </View>
+
       {/* Category List */}
-      <CategoryList categories={categories}
-      setSelectedCategory={(category)=>filterCourseList(category)} />
+      <CategoryList categories={categories} />
+
+      <View>
+        <Text></Text>
+       
+      </View>
 
       {/* Course List */}
-      <View style={{color:'black',borderRadius:8,marginTop:16,padding:9,margin:4}}>
-      <Text style={{fontSize:22, color:'black',fontWeight:'bold',}}>Latest Cousre</Text>
+      <View style={{ color: 'black', borderRadius: 8, marginTop: 16, padding: 9, margin: 4 }}>
+        <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>Latest Cousre</Text>
       </View>
-      <CourseList courseList={courseList} />
+      <CourseList courseList={getFilteredCourseList()} />
 
       {/*HTML Course List */}
-      <View style={{ color:'black',borderRadius:8,marginTop:10,padding:10,margin:4}}>
-      <Text style={{fontSize:22, color:'black',fontWeight:'bold',}}>HTML Course</Text>
+      {/* <View style={{ color: 'black', borderRadius: 8, marginTop: 10, padding: 10, margin: 4 }}>
+        <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>HTML Course</Text>
       </View>
-      <CourseList courseList={getFilterCourseList('HTML')} />
+      <CourseList courseList={getFilterCourseList('HTML')} /> */}
 
       {/*All Course List */}
-      <View style={{ color:'black',borderRadius:8,marginTop:10,padding:10,margin:4}}>
-      <Text style={{fontSize:22, color:'black',fontWeight:'bold',}}>All Course</Text>
+      <View style={{ color: 'black', borderRadius: 8, marginTop: 10, padding: 10, margin: 4 }}>
+        <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>All Course</Text>
       </View>
-      
-      <CourseListVertical courseList={courseList} />
+      <CourseListVertical courseList={getFilteredCourseList()} />
     </ScrollView>
   )
 }
@@ -98,7 +100,23 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   home: {
-    backgroundColor: 'white'
+    backgroundColor: '#f2f2f2'
+  },
+  input: {
+    backgroundColor: '#e6eeff',
+    padding: 12,
+    marginTop: 15,
+    margin: 7,
+    paddingHorizontal: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 6,
+    borderWidth: 2,
+    borderColor: '#b3d9ff',
+    borderLeftWidth: 13,
+    borderRightWidth: 13,
+    borderTopLeftRadius: 40,
+    borderBottomRightRadius: 40,
   }
 })
 

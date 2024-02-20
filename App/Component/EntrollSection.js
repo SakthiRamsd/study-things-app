@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity, Image, Linking } from 'react-native'
 import React, { useEffect } from 'react'
 
-export default function EntrollSection({ userEntrollment, course, onEntrollmentPress, onContinuePress }) {
+export default function EntrollSection ({ userEntrollment, course, onEntrollmentPress, onContinuePress }) {
 
   useEffect(() => {
-    console.log("--", userEntrollment)
+
   }, [])
 
   const onSourceClick = (url) => { Linking.openURL(course?.youtubeUrl) }

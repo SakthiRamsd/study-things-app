@@ -6,39 +6,43 @@ import ProgressCourseItem from '../Component/ProgressCourseItem';
 
 function Course() {
 
-  const {userDetail, setUserDeatail} = useContext(userDeatailsContext);
-  const [entrollCoursesList,setEntrollCoursesList] = useState();
+  const { userDetail, setUserDeatail } = useContext(userDeatailsContext);
+  const [entrollCoursesList, setEntrollCoursesList] = useState();
 
-  const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-useEffect(()=>{
-    userDetail&&getAllUserEntrollCourses();
-}, [userDetail])
- 
-const getAllUserEntrollCourses=()=>{
-    GlobalApi.getAllUserEntrollCourses(userDetail.email).then(resp=>{
-      // console.log(resp);
-     setEntrollCoursesList(resp.userEntrollCourses);
-     setIsLoading(false)
+  useEffect(() => {
+    userDetail && getAllUserEntrollCourses();
+  }, [userDetail])
+
+  const getAllUserEntrollCourses = () => {
+    GlobalApi.getAllUserEntrollCourses(userDetail?.email).then(resp => {
+      setEntrollCoursesList(resp.userEntrollCourses);
+      setIsLoading(false)
     })
-}
+  }
 
   return (
-    <View style={{margin:28}}>
-      <Text style={{fontSize:19, fontWeight:'bold',marginTop:20,backgroundColor:'#cccccc',padding:10,textAlign:'center',borderRadius:15,marginBottom:1}}>Entrolled Courses</Text> 
+    <View style={{ margin: 21 }}>
+      <View style={{ marginLeft: -20, marginRight: -22 }}>
+        <Text style={{
+          fontSize: 17, fontWeight: '500', marginTop: 20, backgroundColor: '#e6e6e6', padding: 12, textAlign: 'center', marginBottom: 1, margin: 7, borderColor: '#b3d9ff', borderWidth: 3, color: 'black', borderLeftWidth: 13,
+          borderRightWidth: 13,
+          borderTopLeftRadius: 40,
+          borderBottomRightRadius: 40,
+        }}>Entrolled Courses</Text>
+      </View>
+      <FlatList
+        data={entrollCoursesList}
+        refreshing={isLoading}
+        onRefresh={() => getAllUserEntrollCourses()}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item, index }) => (
+          <ProgressCourseItem
+            completedChapter={item?.completedChapter?.length}
+            course={item?.courseList} />
+        )} />
 
-      <FlatList 
-      data={entrollCoursesList}
-      refreshing={isLoading}
-      onRefresh={()=>getAllUserEntrollCourses()}
-     showsVerticalScrollIndicator={false}
-      renderItem={({item, index})=>( 
-         <ProgressCourseItem 
-         completedChapter = {item?.completedChapter?.length}
-         course={item?.courseList} />
-  )}  
-      />
-   
     </View>
 
   )

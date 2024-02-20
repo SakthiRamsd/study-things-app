@@ -31,22 +31,19 @@ export default function App() {
   }, [auth]);
 
   const checkAuthenticate = async () => {
-    // Using `isAuthenticated` to check if the user is authenticated or not
     if (await client.isAuthenticated) {
       const userProfile = await client.getUserDetails();
       setUserDetail(userProfile)
       setAuth(true)
-      // console.log(userProfile);
-      // console.log('Authenticated')
     } else {
       setAuth(false)
-      // Need to implement, e.g: redirect user to sign in, etc..
     }
   };
 
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white', }}>
+      
       {/* <Login/> */}
       <AuthContext.Provider value={{ auth, setAuth }}>
         <userDeatailsContext.Provider value={{ userDetail, setUserDetail }}>

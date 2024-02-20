@@ -13,7 +13,7 @@ function TabNavigation() {
     return (
         <Tab.Navigator screenOptions={{
             headerShown: false,
-            tabBarActiveTintColor: '#3399ff',
+            tabBarActiveTintColor: '#0099ff',
         }}>
             <Tab.Screen name='Home' component={Home} options={{
                 tabBarIcon: ({ color, size }) => (
