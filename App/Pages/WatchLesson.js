@@ -37,9 +37,12 @@ export default function WatchLesson() {
 
       <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 70 }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="chevron-back-circle-sharp" size={45} color="black" />
+          <Ionicons name="chevron-back-circle-sharp" size={50} color="black" />
         </TouchableOpacity>
-        <Text style={{ fontFamily: 'PTSerif-Bold', fontSize: 18, color: '#0073e6' }}>Lessons</Text>
+        <View style={{ color: 'black', borderRadius: 8, marginLeft: 15 }}>
+          <Text style={{ fontSize: 21, color: 'black', fontWeight: 'bold', }}>LESSON</Text>
+          <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginTop: 3, elevation: 5 }} />
+        </View>
       </View>
 
       {/* Video Screening */}
@@ -58,7 +61,7 @@ export default function WatchLesson() {
         <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{selectedChapter?.name}</Text>
 
         <TouchableOpacity onPress={() => onChapterCompleted()}>
-          <Text style={{ fontSize: 15, backgroundColor: 'lightblue', padding: 10, borderRadius: 12, paddingHorizontal: 15, textAlign: 'center', fontWeight: '400' }}>Mark Completed</Text>
+          <Text style={{ fontSize: 15, backgroundColor: '#b3d9ff', padding: 10, borderTopRightRadius: 12, borderBottomLeftRadius: 12, paddingHorizontal: 15, textAlign: 'center', fontWeight: '400' }}>Mark Completed</Text>
         </TouchableOpacity>
       </View>
 

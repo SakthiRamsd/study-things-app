@@ -7,7 +7,7 @@ export default function CourseStart({ course }) {
 
   return course && (
 
-    <View style={{ padding: 5, backgroundColor: '#e6e6e6', borderRadius: 5, marginTop: 10 }} >
+    <View style={{ padding: 5, backgroundColor: '#e6e6e6', borderRadius: 6, marginTop: 10 }} >
 
       {course?.chapter[0] ?
         <Video
@@ -32,7 +32,11 @@ export default function CourseStart({ course }) {
           <Text style={{ fontWeight: 'bold' }}>{course.course ? 'Course' : 'Project'}</Text>
         </View>
 
-        <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>Description</Text>
+        <View style={{ color: 'black', borderRadius: 8, padding: 9 }}>
+          <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>Description</Text>
+          <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginTop: 3, elevation: 5, marginBottom: 10 }} />
+        </View>
+
         <Text style={{ fontSize: 13, marginTop: -12, fontWeight: '500' }}>{course?.description}</Text>
       </View>
     </View>

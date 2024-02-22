@@ -24,14 +24,13 @@ function Course() {
 
   return (
     <View style={{ margin: 21 }}>
-      <View style={{ marginLeft: -20, marginRight: -22 }}>
-        <Text style={{
-          fontSize: 17, fontWeight: '500', marginTop: 20, backgroundColor: '#e6e6e6', padding: 12, textAlign: 'center', marginBottom: 1, margin: 7, borderColor: '#b3d9ff', borderWidth: 3, color: 'black', borderLeftWidth: 13,
-          borderRightWidth: 13,
-          borderTopLeftRadius: 40,
-          borderBottomRightRadius: 40,
-        }}>Entrolled Courses</Text>
+      <View style={{ marginLeft: -20, marginRight: -22, marginTop: 15 }}>
+        <View style={{ color: 'black', borderRadius: 8, marginTop: 16, padding: 9, margin: 3 }}>
+          <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>ENROLL COURSES</Text>
+          <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginTop: 3, elevation: 5 }} />
+        </View>
       </View>
+
       <FlatList
         data={entrollCoursesList}
         refreshing={isLoading}

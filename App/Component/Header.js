@@ -17,16 +17,16 @@ function Header() {
     }
 
     return (
-            <View style={styles.view}>
+        <View style={styles.view}>
 
-                <Image source={{ uri: userDetail?.picture }}
-                    style={styles.img}
-                />
-                <View>
-                    <Text style={styles.text1}>Welcome!</Text>
-                    <Text style={styles.text2}>Hello, {userDetail?.given_name}</Text>
-                </View>
+            <Image source={{ uri: userDetail?.picture }}
+                style={styles.img}
+            />
+            <View>
+                <Text style={styles.text1}>WELCOME!</Text>
+                <Text style={styles.text2}>Hello, {userDetail?.given_name}</Text>
             </View>
+        </View>
     )
 }
 
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     img: {
         width: 50,
         height: 50,
-        borderBottomLeftRadius: 13,
-        borderTopRightRadius:13
+        borderBottomLeftRadius: 12,
+        borderTopRightRadius: 12
     },
     view: {
         paddingTop: 20,
@@ -43,17 +43,19 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         display: 'flex',
         flexDirection: 'row',
-        gap:7,
+        gap: 7,
         alignItems: 'center'
     },
     text1: {
-        fontSize: 20,
-        fontWeight:'bold',
+        fontSize: 19,
+        fontWeight: 'bold',
+        marginLeft: 195,
     },
     text2: {
         fontSize: 13,
-        color: '#ff3300',
-        fontWeight:'500'
+        color: '#1a8cff',
+        fontWeight: '500',
+        marginLeft: 175
     }
 })
 

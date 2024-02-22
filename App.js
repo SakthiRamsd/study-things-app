@@ -43,7 +43,7 @@ export default function App() {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white', }}>
-      
+
       {/* <Login/> */}
       <AuthContext.Provider value={{ auth, setAuth }}>
         <userDeatailsContext.Provider value={{ userDetail, setUserDetail }}>

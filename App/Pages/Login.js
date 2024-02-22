@@ -9,7 +9,7 @@ function Login() {
 
 
   const { auth, setAuth } = useContext(AuthContext);
- 
+
   const handleSignUp = async () => {
     const token = await client.register();
     if (token) {
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 13,
     margin: 30,
-    backgroundColor:'blue',
+    backgroundColor: 'blue',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',

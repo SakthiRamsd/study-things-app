@@ -46,7 +46,7 @@ function Home() {
   // }
 
   const getFilteredCourseList = () => {
-  return courseList.filter((item) =>
+    return courseList.filter((item) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   };
@@ -61,22 +61,20 @@ function Home() {
       <View style={styles.input}>
         <FontAwesome name="search" size={24} color="black" />
         <TextInput style={{ fontWeight: 'normal', color: 'black' }}
-          placeholder='Search Here'  value={searchQuery}
+          placeholder='Search Here' value={searchQuery}
           onChangeText={(text) => setSearchQuery(text)} />
       </View>
 
       {/* Category List */}
       <CategoryList categories={categories} />
 
-      <View>
-        <Text></Text>
-       
-      </View>
 
       {/* Course List */}
       <View style={{ color: 'black', borderRadius: 8, marginTop: 16, padding: 9, margin: 4 }}>
         <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>Latest Cousre</Text>
+        <View style={styles.line} />
       </View>
+
       <CourseList courseList={getFilteredCourseList()} />
 
       {/*HTML Course List */}
@@ -88,6 +86,7 @@ function Home() {
       {/*All Course List */}
       <View style={{ color: 'black', borderRadius: 8, marginTop: 10, padding: 10, margin: 4 }}>
         <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>All Course</Text>
+        <View style={styles.line} />
       </View>
       <CourseListVertical courseList={getFilteredCourseList()} />
     </ScrollView>
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2'
   },
   input: {
-    backgroundColor: '#e6eeff',
+    backgroundColor: '#f2f2f2',
     padding: 12,
     marginTop: 15,
     margin: 7,
@@ -112,12 +111,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 6,
     borderWidth: 2,
-    borderColor: '#b3d9ff',
+    borderColor: '#a6a6a6',
     borderLeftWidth: 13,
     borderRightWidth: 13,
     borderTopLeftRadius: 40,
     borderBottomRightRadius: 40,
-  }
+  },
+  line: {
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
+    marginTop: 3,
+    elevation: 5
+  },
 })
 
 export default Home

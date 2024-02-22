@@ -110,11 +110,11 @@ const markChapterCompleted = async (recordId, chapterId) => {
 }
 
 // Get All Users Enroll Courses
-const getAllUserEntrollCourses = async(email)=>{
-    const query = gql`
+const getAllUserEntrollCourses = async (email) => {
+  const query = gql`
     
     query MyQuery {
-      userEntrollCourses(where: {userEmail: "`+email+`"}) {
+      userEntrollCourses(where: {userEmail: "`+ email + `"}) {
         completedChapter {
           ... on CompletedChapter {
             id
@@ -149,8 +149,8 @@ const getAllUserEntrollCourses = async(email)=>{
     
     `
 
-    const result = await request(MASTER_URL, query);
-    return result;
+  const result = await request(MASTER_URL, query);
+  return result;
 
 }
 

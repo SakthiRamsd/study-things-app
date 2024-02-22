@@ -53,13 +53,11 @@ function Profile() {
 
   return (
     <View style={{ padding: 30, marginTop: 15 }}>
-      <View style={{ marginLeft: -20, marginRight: -22 }}>
-        <Text style={{
-          fontWeight: '500', fontSize: 18, backgroundColor: '#e6e6e6', padding: 12, textAlign: 'center', color: 'black', borderColor: '#b3d9ff', borderWidth: 3, borderRightWidth: 13,
-          borderTopLeftRadius: 40,
-          borderBottomRightRadius: 40,
-          borderLeftWidth: 13
-        }}>Profile</Text>
+      <View style={{ marginLeft: -19, marginRight: -19 }}>
+        <View style={{ color: 'black', borderRadius: 8, marginTop: 16, padding: 9, margin: 4 }}>
+          <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>PROFILE</Text>
+          <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginTop: 3, elevation: 5 }} />
+        </View>
       </View>
 
       {userDetail && <View style={{ alignItems: 'center', margin: 30, gap: 3 }}>
@@ -76,7 +74,7 @@ function Profile() {
           data={menu}
           renderItem={({ item, index }) => (
             <TouchableOpacity onPress={() => onMenuClick(item)}
-              style={{ display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', marginBottom: 20, backgroundColor: 'white', padding: 12, borderTopLeftRadius: 40, borderBottomRightRadius: 40, borderLeftWidth: 13, borderLeftColor: '#80bfff', borderRightWidth: 13, borderRightColor: '#80bfff', borderBottomWidth: 1.2, borderBottomColor: '#80bfff' }}
+              style={{ display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', marginBottom: 20, backgroundColor: 'white', padding: 12, borderTopLeftRadius: 40, borderBottomRightRadius: 40, borderLeftWidth: 13, borderLeftColor: '#80bfff', borderRightWidth: 13, borderRightColor: '#80bfff', borderBottomWidth: 2, borderBottomColor: '#80bfff', elevation: 6 }}
             >
               <Ionicons name={item.icon} size={25} color="gray" />
               <Text style={{ fontWeight: 'bold', fontSize: 19 }}>{item?.name}</Text>

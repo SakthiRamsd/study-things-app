@@ -4,7 +4,7 @@ import CourseItemVertical from './CourseItemVertical'
 
 export default function CourseListVertical({ courseList }) {
   return (
-    
+
     <View>
       <FlatList
         data={courseList}
