@@ -17,7 +17,6 @@ export default function ProgressCourseItem({ course, completedChapter }) {
   const calculatePerCompleted = () => {
 
     const perc = (completedChapter / course?.chapter?.length)
-    console.log("percentage", perc)
     return perc.toFixed(2);
   }
 

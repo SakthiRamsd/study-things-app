@@ -1,6 +1,12 @@
 import { request, gql } from 'graphql-request'
+import axios from 'axios';
 
 const MASTER_URL = "https://api-ap-south-1.hygraph.com/v2/clscw9zph0f2s01w6737ylvqp/master";
+
+const BASE_URL='http://192.168.1.52:3000/api/bardapi';
+
+const getBardApi=(userMsg)=>axios.get(BASE_URL+"?ques="+userMsg);
+
 
 const getCategory = async () => {
   const query = gql`
@@ -160,5 +166,6 @@ export default {
   checkUserCourseEntrollment,
   saveUserCourseEnroll,
   markChapterCompleted,
-  getAllUserEntrollCourses
+  getAllUserEntrollCourses,
+  getBardApi
 }

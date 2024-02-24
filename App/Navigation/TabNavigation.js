@@ -6,14 +6,18 @@ import Profile from '../Pages/Profile';
 import { Entypo } from '@expo/vector-icons';
 import { Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import Chatbot from '../Pages/Chatbot';
 
 function TabNavigation() {
 
     const Tab = createBottomTabNavigator();
+
     return (
+
         <Tab.Navigator screenOptions={{
             headerShown: false,
             tabBarActiveTintColor: '#0099ff',
+
         }}>
             <Tab.Screen name='Home' component={Home} options={{
                 tabBarIcon: ({ color, size }) => (
@@ -41,6 +45,16 @@ function TabNavigation() {
                     ),
                     tabBarLabel: ({ color }) => (
                         <Text style={{ color: color, fontSize: 12 }}>PROFILE</Text>
+                    )
+                }} />
+
+            <Tab.Screen name='chat' component={Chatbot}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <Entypo name="chat" size={24} color={color} />
+                    ),
+                    tabBarLabel: ({ color }) => (
+                        <Text style={{ color: color, fontSize: 12 }}>CHATBOT</Text>
                     )
                 }} />
 
