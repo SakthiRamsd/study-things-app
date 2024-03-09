@@ -1,82 +1,68 @@
-import React, { useState } from 'react'
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import Carousel from 'react-native-snap-carousel';
-
+import React, { useState } from 'react';
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Swiper from 'react-native-swiper';
 
 function CategoryList({ categories }) {
-
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const renderCarouselItem = ({ item, index }) => (
+  const renderCategoryItem = ({ item, index }) => (
     <TouchableOpacity
       style={[
         styles.container,
-        activeIndex === index && {
-          backgroundColor: '#b3d9ff',
-          borderWidth: 1,
-          borderColor: '#80bfff',
-        },
+        activeIndex === index
       ]}
       onPress={() => {
         setActiveIndex(index);
       }}>
-      <Image source={{ uri: item?.icon?.url }} style={{ width: 45, height: 45 }} />
+      <Image source={{ uri: item?.icon?.url }} style={{ width: 330, height: 180,borderRadius:15,marginTop:25 }} />
       <Text style={{ fontSize: 13, textAlign: 'center', marginTop: 4, color: 'black' }}>
         {item?.name}
       </Text>
     </TouchableOpacity>
   );
 
+  // Check if categories is undefined or null
+  if (!categories) {
+    return null; // or display a loading indicator or some default content
+  }
+
   return (
-
-    <View style={{ marginLeft: 3 }}>
-      <View style={{ color: 'black', borderRadius: 8, padding: 10, marginBottom: 13, marginTop: 2 }}>
-        <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold' }}>Category</Text>
-        <View style={styles.line} />
-      </View>
-
-      <Carousel
-        data={categories}
-        renderItem={renderCarouselItem}
-        sliderWidth={370}
-        itemWidth={130}
-        onSnapToItem={(index) => setActiveIndex(index)}
-        loop
-        autoplay
-        autoplayInterval={3000}
-        inactiveSlideOpacity={1}
-        inactiveSlideScale={1}
-      />
+    <View style={styles.wrapper}>
+      <Swiper
+        style={styles.wrapper}
+        loop={true}
+        autoplay={true}
+        onIndexChanged={index => setActiveIndex(index)}>
+        {categories.map((category, index) => (
+          <View key={index} style={styles.slide}>
+            {renderCategoryItem({ item: category, index })}
+          </View>
+        ))}
+      </Swiper>
     </View>
-
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    height: 190,
+    marginTop: 3
+  },
+  slide: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
-    backgroundColor: '#e6f2ff',
-    padding: 10,
-    marginRight: 10,
+    marginRight: 15,
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopLeftRadius: 40,
-    borderBottomRightRadius: 40,
-    height: 120,
-    width: 120,
-    marginLeft: 8,
-    borderWidth: 2,
-    borderColor: '#66b3ff',
-    borderEndWidth: 12,
-    elevation: 5,
-    borderLeftWidth: 10
+    height: 170,
+    width: 310,
+    marginLeft: 18,
+    elevation: 1,
+    borderRadius: 15,
   },
-  line: {
-    borderBottomColor: 'gray', // Change the color as needed
-    borderBottomWidth: 1,
-    marginTop: 3,
-    elevation: 4
+});
 
-  },
-})
-
-export default CategoryList
+export default CategoryList;

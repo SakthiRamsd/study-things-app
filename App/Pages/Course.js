@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { userDeatailsContext } from '../../App'
 import GlobalApi from '../Shared/GlobalApi';
 import ProgressCourseItem from '../Component/ProgressCourseItem';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 function Course() {
 
+  const Navigation = useNavigation();
   const { userDetail, setUserDeatail } = useContext(userDeatailsContext);
   const [entrollCoursesList, setEntrollCoursesList] = useState();
 
@@ -23,11 +26,15 @@ function Course() {
   }
 
   return (
+    <View style={{flex:1}}>
     <View style={{ margin: 21 }}>
-      <View style={{ marginLeft: -20, marginRight: -22, marginTop: 15 }}>
-        <View style={{ color: 'black', borderRadius: 8, marginTop: 16, padding: 9, margin: 3 }}>
-          <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>ENROLL COURSES</Text>
-          <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginTop: 3, elevation: 5 }} />
+    <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',marginLeft:-15}}>
+        <TouchableOpacity onPress={() => Navigation.goBack()}>
+        <Ionicons name="arrow-undo" size={30} color="black" style={{marginTop:5,marginBottom:-10}} />
+        </TouchableOpacity>
+    
+        <View style={{ color: 'black', borderRadius: 8, marginTop: 28, padding: 9, margin: 3 }}>
+          <Text style={{ fontSize: 21, color: 'black', fontWeight: 'bold', }}>MY COURSE</Text>
         </View>
       </View>
 
@@ -42,6 +49,7 @@ function Course() {
             course={item?.courseList} />
         )} />
 
+    </View>
     </View>
 
   )

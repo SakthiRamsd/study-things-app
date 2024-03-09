@@ -1,13 +1,25 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, Share } from 'react-native'
 import React from 'react'
 import { Video, ResizeMode } from 'expo-av';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { Entypo } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+
 
 export default function CourseStart({ course }) {
 
+  const navigation = useNavigation();
+
   return course && (
 
-    <View style={{ padding: 5, backgroundColor: '#e6e6e6', borderRadius: 6, marginTop: 10 }} >
+    <View style={{ padding: 15, backgroundColor: '#ffffff', borderRadius: 15, marginTop: 10 }} >
+      <View style={{flexDirection:'row',justifyContent:'space-between',marginBottom:10,alignItems:'center',marginBottom:-10}}>
+       <TouchableOpacity onPress={() => navigation.goBack()} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',marginBottom:12,marginTop:10 }}>
+       <Ionicons name="arrow-undo" size={30} color="black" style={{ position: 'absolute', left: 0 }} />
+          </TouchableOpacity>
+          </View>
 
       {course?.chapter[0] ?
         <Video
@@ -18,23 +30,24 @@ export default function CourseStart({ course }) {
           }}
           useNativeControls={true}
           resizeMode={ResizeMode.CONTAIN}
-          isLooping /> :
+          isLooping></Video>:
         <Image source={{ uri: course?.banner?.url }}
-          style={{ padding: 10, width: 340, height: 200, borderRadius: 10, alignSelf: 'center', marginBottom: 5, marginTop: 5 }} />
+          style={{ width: 310, height: 180, borderRadius: 12, alignSelf: 'center', marginBottom: 5, marginTop: 25 }} />
       }
+      
 
       <View style={{ display: 'flex', gap: 8 }}>
         <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>{course.name}</Text>
         <Text style={{ color: 'red', fontSize: 13, fontWeight: 'bold' }}>{course.author}</Text>
 
         <View style={{ display: "flex", flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <FontAwesome5 name="book-open" size={24} color="black" />
-          <Text style={{ fontWeight: 'bold' }}>{course.course ? 'Course' : 'Project'}</Text>
+          <FontAwesome5 name="book-open" size={24} color="#008ae6" />
+          <Text style={{ fontWeight: 'bold' , color:'#008ae6'}}>{course.course ? 'Course' : 'Project'}</Text>
         </View>
 
         <View style={{ color: 'black', borderRadius: 8, padding: 9 }}>
-          <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', }}>Description</Text>
-          <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginTop: 3, elevation: 5, marginBottom: 10 }} />
+          <Text style={{ fontSize: 22, color: 'black', fontWeight: 'bold', marginBottom:3,marginLeft:-10 }}>Description</Text>
+          
         </View>
 
         <Text style={{ fontSize: 13, marginTop: -12, fontWeight: '500' }}>{course?.description}</Text>

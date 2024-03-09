@@ -1,13 +1,11 @@
-import React, { useContext } from 'react'
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useContext } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { client } from './../Shared/KindConfig';
 import { AuthContext } from '../../App';
-
+import Swiper from 'react-native-swiper';
 
 function Login() {
-
-
   const { auth, setAuth } = useContext(AuthContext);
 
   const handleSignUp = async () => {
@@ -26,85 +24,72 @@ function Login() {
     }
   };
 
-
   return (
-    <View >
-      <Image source={require('./../Assets/Images/log_img.png')}
-        style={styles.img}
-      />
-      <View style={styles.container}>
-        <Text style={styles.welcome}>WELCOME TO</Text>
-        <Text style={styles.title}>STUDY THINGS</Text>
-        <Text style={styles.title2}>Login and SignUp</Text>
-      </View>
+    <View style={styles.container}>
+      <Swiper style={styles.swiper} loop={false} autoplay={true} autoplayTimeout={4}>
+        <Image source={require('../Assets/Images/login1.jpg')} style={styles.img} />
+        <Image source={require('../Assets/Images/login2.jpg')} style={styles.img} />
+        <Image source={require('../Assets/Images/login3.jpg')} style={styles.img} />
+      </Swiper>
 
       <TouchableOpacity onPress={handleSignIn} style={styles.button}>
-        <FontAwesome name="google" size={24} color="white" style={{ marginRight: 10 }} />
-        <Text style={styles.text3}>Login</Text>
+        <Text style={styles.text}>Login</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity onPress={handleSignUp} style={styles.button2}>
+        <Text style={styles.text}>Register</Text>
+      </TouchableOpacity>
 
-      <View style={styles.new}>
-        <Text>Create a New Account? </Text>
-        <TouchableOpacity onPress={handleSignUp} >
-          <Text style={styles.new2}>New User</Text>
-        </TouchableOpacity>
-      </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'white',
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
-    marginTop: -25,
-  },
-  welcome: {
-    fontSize: 20,
-    fontWeight: '300',
-    textAlign: 'center',
-  },
-  title: {
-    fontSize: 28,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  title2: {
-    fontSize: 15,
-    marginTop: 100,
-    fontWeight: '500',
-    textAlign: 'center',
-    color: 'red',
+    marginTop:40,
+    
   },
   img: {
-    width: 370,
-    height: 300,
+    width: '100%',
+    height: 500,
+    position: 'absolute',
+    borderRadius:20
+
+  },
+  swiper: {
+    height: 900,
   },
   button: {
-    padding: 13,
-    margin: 30,
-    backgroundColor: 'blue',
+    padding: 20,
+    margin: 10,
+    backgroundColor: '#66c2ff',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 12
+    borderRadius: 7,
+    width:'90%',
   },
-  text3: {
-    color: 'white',
-  },
-  new: {
-    justifyContent: 'center',
+  button2: {
+    padding: 20,
+    margin: 10,
+    backgroundColor: '#008ae6',
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 7,
+    width:'90%',
+    marginBottom:50
   },
-  new2: {
-    color: 'red',
+  text: {
+    color: 'white',
+    fontWeight:'600'
   }
-
 });
 
-export default Login
+export default Login;

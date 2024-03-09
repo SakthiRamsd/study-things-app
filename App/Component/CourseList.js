@@ -1,21 +1,27 @@
-import { View, FlatList } from 'react-native'
-import React from 'react'
-import CourseItem from './CourseItem'
+import React from 'react';
+import { View } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+import CourseItem from './CourseItem';
 
 function CourseList({ courseList }) {
+  const renderItem = ({ item }) => (
+     <CourseItem course={item} />
+  );
 
   return (
-
     <View>
-      <FlatList
+      <Carousel
         data={courseList}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item, index }) => (
-          <CourseItem course={item} />
-        )} />
+        renderItem={renderItem}
+        sliderWidth={350}
+        itemWidth={300}
+        layout={'default'}
+        loop={true}
+        autoplay={true}
+        autoplayInterval={3000}
+      />
     </View>
-  )
+  );
 }
 
-export default CourseList
+export default CourseList;

@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function ProgressBar({ perc }) {
 
-  const screenWidth = Dimensions.get('screen').width * .8;
+  const screenWidth = Dimensions.get('screen').width * 0.8;
   const progressWidth = screenWidth * perc;
 
   return (

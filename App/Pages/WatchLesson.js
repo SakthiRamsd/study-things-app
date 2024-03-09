@@ -2,11 +2,11 @@ import { View, Text, TouchableOpacity, ToastAndroid } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { Video, ResizeMode } from 'expo-av';
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { Ionicons } from '@expo/vector-icons';
 import LessonInfo from '../Component/LessonInfo';
 import { ScrollView } from 'react-native-gesture-handler';
 import GlobalApi from '../Shared/GlobalApi';
 import { ReloadContext } from '../../App';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function WatchLesson() {
   const { params } = useRoute();
@@ -33,16 +33,14 @@ export default function WatchLesson() {
 
   return selectedChapter && (
 
-    <ScrollView style={{ padding: 10, marginTop: 30 }}>
+    <ScrollView style={{backgroundColor:'#e6e6e6',padding:13}}>
+
+    <View style={{ padding: 15, marginTop: 40,backgroundColor:'#ffffff',borderRadius:13}}>
 
       <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 70 }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="chevron-back-circle-sharp" size={50} color="black" />
+        <Ionicons name="arrow-undo" size={30} color="black" style={{marginTop:5,marginBottom:-10}} />
         </TouchableOpacity>
-        <View style={{ color: 'black', borderRadius: 8, marginLeft: 15 }}>
-          <Text style={{ fontSize: 21, color: 'black', fontWeight: 'bold', }}>LESSON</Text>
-          <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginTop: 3, elevation: 5 }} />
-        </View>
       </View>
 
       {/* Video Screening */}
@@ -57,21 +55,23 @@ export default function WatchLesson() {
         isLooping
       />}
 
-      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 18, flex: 1 }}>
+      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 15,marginBottom:10}}>
         <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{selectedChapter?.name}</Text>
 
         <TouchableOpacity onPress={() => onChapterCompleted()}>
-          <Text style={{ fontSize: 15, backgroundColor: '#b3d9ff', padding: 10, borderTopRightRadius: 12, borderBottomLeftRadius: 12, paddingHorizontal: 15, textAlign: 'center', fontWeight: '400' }}>Mark Completed</Text>
+          <Text style={{ fontSize: 15, backgroundColor: '#66c2ff', padding: 8, textAlign: 'center', fontWeight: '400',borderRadius:8 }}>Mark Completed</Text>
         </TouchableOpacity>
       </View>
 
-      <LessonInfo
+      
+
+    </View>
+    <LessonInfo
         course={course}
         userEntrollment={userEntrollment}
         onChapterSelect={(chapter) => setSelectedChapter(chapter)}
         selectedChapter={selectedChapter}
       />
-
     </ScrollView>
   )
 }

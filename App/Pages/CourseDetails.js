@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { Ionicons } from '@expo/vector-icons';
+
 import CourseStart from '../Component/CourseStart';
 import EntrollSection from '../Component/EntrollSection';
 import { ReloadContext, userDeatailsContext } from '../../App';
@@ -46,16 +46,10 @@ export default function CourseDetails() {
   }
 
   return (
-    <ScrollView style={{ padding: 10, marginTop: 30 }}>
+    <ScrollView style={{ flex:1,backgroundColor:'#e6e6e6',padding: 15, marginTop: 35 }}>
       <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 70 }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="chevron-back-circle-sharp" size={50} color="black" />
-        </TouchableOpacity>
+       
 
-        <View style={{ color: 'black', borderRadius: 8, marginLeft: -24 }}>
-          <Text style={{ fontSize: 21, color: 'black', fontWeight: 'bold', }}>COURSE DETAILS</Text>
-          <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginTop: 3, elevation: 5 }} />
-        </View>
       </View>
 
       <CourseStart course={course} />

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "quizapp-858b5",
+  "private_key_id": "542f8c64a5179550cb7569b8ab2e73ee2457382e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC4c3CrrRKXviWL\nUo/5P/iB44lV1fbDtI/dJL3bBKPQDoDa7/+XUpL2J57Pxy+IUY4GjF+8ntYbSj/h\nd2yjw0awgyuWU3Nv2m5UPIAbRGV5tDD9KxwwiYhYVGzl2OHROUz78sSA03zOIH32\nD/yiIK2UYnOH3J49BUFEKBvWkZX2K/omx0q8NQ0yBzeTqiDflZx0IGmmR78ltP8A\nIjWqJZMe9DkEcXzWdfqRuKvPuhNYgxnyNDBozCTH5Px/Wa1pHeSFSMbvwbMFQBsE\nUVYHuVRxt0h/FGlVNQkwi2niJT1mxEAQDK0PO1/Tf/65rHQLhNRy+AlJxfibixlV\nLyK+F7ljAgMBAAECggEANyTEFX8rpNQDE3D+fAzk9agZ4eCS4pVzwTB/1h+//a6o\nVUwVBJ96Mj9MGmA5VK7VIB4NbS2rYwNCr9xtTVRPKOw+NrYCN/l8rJBd2EkNcWIu\nlzGxPs2PRqEO4XSCpnNUEarVlpIjqNhL8Cl9ZNcSLd91HLQXVrTge0jmcbKau7qM\naH/pf0CqohBCNnWnZ+iLwr+bFdHfragDJAGB1eCZScDGDnZNE0U8oQtwm03RgeG4\n0d49+4Zp/gTRno3hwuZyR8+Hl5EG+gO2BjLi7OtVdS+0DdZD2xRbgQicNacUJf2M\n+Cpq4fuucTjVv0sD8L6P0O4I9yMzXLKq9e46GezkWQKBgQD/yENoEJ1ahLx+Z5eT\nGegdOiG3ijHlEQSlXCwtGhc01H5Lo4MGu3U2sYrqTT6GDJ3DGruiQTvWucpzXIEW\nO6sREL5esE1I5WjFM5YGJDWmWF+4EezUcq4+QtpPUyXwODfaMvgD7mwBcjrPiXWe\nYBeQ3Xmi76aiu5sQL0k2WkziRQKBgQC4m6IbXGyYVvDaPuBD0zBAbZMCQ21jB9Kw\noggrxTB+iGsVxnmUdpCOfBsuRgVs+bIB2nmq98bLxPnw5opZDVRyCFgwkqZ2f0qk\nJYR1t46tN377FtmpHpMX1589T3eWs+PIeb+t8bnsB07XJhCqh3naKXQvBAdxyOpH\nNAUZI3S7hwKBgQC/sHrr03/Jpa6J4OLUiFbPCJDaN0Q7Umyz7Ibi6im4GwPndcwt\nUHGAor/j5i3UUkItRKyX5eGNg8F4gTvwyJjkejLhTakt11eUapulUJ+wYYyiqzRc\n5vE0ke+AAWVuSQN6kDYU5CqnTs9KV88A+SzQEVsmRAoS7RxBnd51UGlMLQJ/PUtv\nh6YoaGx1jAFUdTCp1LqNFTNOHpN6YStrixzt/RVOeOxtcd3sIWMTo0mcg5JkiDkC\nLMIYP5AnbNUfGnJSl4otvfLzUmTxY48RbASGWv0SLExp+L0uGbx+It0/18ni162U\n9yxLjxLeGpGI9xYEX2tkKDguQJl1MC8VgkNDfwKBgQDJmTyXGigEIhPat/rlyuku\nXRS5O+Dw5IFq1k/ANDLhXzcZJqqJTuM98uaNyhiX9FZL1iP/YLXN41D9Xubr8HNq\nMlS3W5b7rnA+9hzW/0dTLmyDy5LeNuNQz0Xr8V7mSnb7u7FZNZ+PRc8rwONsa++8\ncfreggyvA0MIrXh4Cb46lw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-lzqf3@quizapp-858b5.iam.gserviceaccount.com",
+  "client_id": "116030617231404235586",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-lzqf3%40quizapp-858b5.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
