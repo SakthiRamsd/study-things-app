@@ -2,8 +2,8 @@ import { View } from 'react-native';
 import { createContext, useEffect, useState } from 'react';
 import { client } from './App/Shared/KindConfig';
 import { NavigationContainer } from '@react-navigation/native';
-import AppNavigation from './App/Navigation/AppNavigation';
 import WelcomeScreen from './App/Pages/WelcomeScreen';
+import AppNavigation from './App/Navigation/AppNavigation';
 
 
 

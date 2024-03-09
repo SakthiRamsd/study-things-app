@@ -1,7 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import CourseDetails from '../Pages/CourseDetails';
-import TabNavigation from './TabNavigation';
 import WatchLesson from '../Pages/WatchLesson';
 import PlayGround from '../Pages/PlayGround';
 import SearchResult from '../Pages/SearchResult';
@@ -17,9 +16,7 @@ const Stack = createStackNavigator();
 
 export default function AppNavigation() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name='tabnavigation' component={TabNavigation} /> */}
-      
+    <Stack.Navigator screenOptions={{ headerShown: false }}>      
       <Stack.Screen name='home' component={Home}/>
       <Stack.Screen name='course' component={Course}/>
       <Stack.Screen name='favorite' component={FavoriteScreen}/>
