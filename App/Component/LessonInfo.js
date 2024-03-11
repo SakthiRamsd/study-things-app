@@ -38,7 +38,7 @@ export default function LessonInfo({ course, userEntrollment, onChapterSelect, s
               <Text style={{ fontSize: 13, fontWeight: '500',color:'#ffffff' }}>{item?.name}</Text>
 
 
-              {checkIsChapterCompleted(item?.id) ? <AntDesign name="checkcircle" size={28} color="#ffffff" /> :
+              {checkIsChapterCompleted(item?.id) ? <AntDesign name="checkcircle" size={28} color="#33cc33" /> :
                 userEntrollment != [] || index == 0 ? <Ionicons name="play-circle" size={35} color="#ffffff" />
                   : <Entypo name="lock" size={28} color="#ffffff" />}
             </View>

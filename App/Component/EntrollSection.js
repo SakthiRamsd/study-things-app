@@ -25,8 +25,8 @@ export default function EntrollSection({ userEntrollment, course, onEntrollmentP
       {course?.chapter[0] && userEntrollment?.length > 0 ?
         <TouchableOpacity onPress={() => onContinuePress()} style={{ backgroundColor: '#008ae6', padding: 10, height: 55, marginTop: 15, justifyContent: 'center',borderRadius:10}}><Text style={{ fontSize: 14, fontWeight: 'bold', textAlign: 'center',color:'#ffffff' }}>Continue</Text>
         </TouchableOpacity> :
-        course?.chapter[0] && <TouchableOpacity onPress={() => onEntrollmentPress()} style={{ backgroundColor: 'white', padding: 12, elevation: 6, height: 60, marginTop: 10, justifyContent: 'center', borderRadius:15}}>
-          <Text style={{ fontSize: 14, fontWeight: 'bold', textAlign: 'center' }}>Entroll to Course</Text>
+        course?.chapter[0] && <TouchableOpacity onPress={() => onEntrollmentPress()} style={{ backgroundColor: '#008ae6', padding: 11, height: 60, marginTop: 13, justifyContent: 'center', borderRadius:10}}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', textAlign: 'center',color:'#ffffff' }}>Entroll to Course</Text>
         </TouchableOpacity>}
     </View>
   )

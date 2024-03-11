@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal, Button } from 'react-native';
 import { client } from '../Shared/KindConfig';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 function Header() {
     const [userDetail, setUserDetail] = useState();
@@ -45,14 +46,18 @@ function Header() {
 
     return (
         <View style={styles.container}>
+            <View> 
+                <Image source={{ uri: userDetail?.picture }} style={styles.profileImage} />
+            </View>
             <View style={styles.profileInfo}>
                 <Text style={styles.greeting}>HELLO!</Text>
                 <Text style={styles.userName}>{userDetail?.given_name}</Text>
             </View>
+
             <TouchableOpacity onPress={handleProfilePress}>
-                
-                <Image source={{ uri: userDetail?.picture }} style={styles.profileImage} />
+               <Ionicons name="options" size={36} color="black" />
             </TouchableOpacity>
+            
 
             <Modal
                 animationType="slide"
@@ -86,6 +91,7 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         paddingBottom: 12,
         width: '100%',
+        gap:10
     },
     profileInfo: {
         flex: 1,
