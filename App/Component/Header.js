@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Modal, Button } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { client } from '../Shared/KindConfig';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
+
 
 function Header() {
     const [userDetail, setUserDetail] = useState();
-    const [modalVisible, setModalVisible] = useState(false);
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -18,65 +17,28 @@ function Header() {
         setUserDetail(user);
     };
 
-    const handleProfilePress = () => {
-        setModalVisible(true);
-    };
-
-    const closeModal = () => {
-        setModalVisible(false);
-    };
-
-    const handleProfileScreenPress = () => {
-        setModalVisible(false);
+    const getProfile = () => {
         navigation.navigate('profile');
     };
 
-    const handleCourseScreenPress = () =>{
-        setModalVisible(false);
-        navigation.navigate('course')
-    }
-    const handleFaveScreenPress = () =>{
-        setModalVisible(false);
-        navigation.navigate('favorite')
-    }
-    const handleQuizScreenPress = () =>{
-        setModalVisible(false);
-        navigation.navigate('quiz')
-    }
 
     return (
         <View style={styles.container}>
-            <View> 
-                <Image source={{ uri: userDetail?.picture }} style={styles.profileImage} />
-            </View>
-            <View style={styles.profileInfo}>
+
+             <View style={styles.profileInfo}>
                 <Text style={styles.greeting}>HELLO!</Text>
                 <Text style={styles.userName}>{userDetail?.given_name}</Text>
             </View>
 
-            <TouchableOpacity onPress={handleProfilePress}>
-               <Ionicons name="options" size={36} color="black" />
-            </TouchableOpacity>
-            
-
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={closeModal}
-            >
-                <View style={styles.modalContainer}>
-                    <TouchableOpacity onPress={closeModal} style={{borderColor:'#ffffff',borderWidth:4,width:60,alignSelf:'center',borderRadius:99,marginBottom:30}}/>
-                <View style={{height:20,}}/>
-                    <View style={styles.modalContent}>
-                        <Button title="Profile" onPress={handleProfileScreenPress}/>
-                        <Button title='My Course' onPress={handleCourseScreenPress}/>
-                        <Button title='Favorite' onPress={handleFaveScreenPress}/>
-                        <Button title='Quiz' onPress={handleQuizScreenPress}/>
-                        <Button title="Close" onPress={closeModal} />
-                    </View>
-                </View>
-            </Modal>
+            <View>
+                {userDetail && (
+                    <TouchableOpacity onPress={getProfile}>
+                        <Image source={{ uri: userDetail.picture }} style={styles.profileImage} />
+                    </TouchableOpacity>
+                )}
+            </View>
+           
+    
         </View>
     );
 }
@@ -84,47 +46,34 @@ function Header() {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
         paddingTop: 15,
         paddingLeft: 10,
         paddingRight: 10,
         paddingBottom: 12,
         width: '100%',
-        gap:10
+        gap: 10
     },
     profileInfo: {
         flex: 1,
+        padding:10
     },
     greeting: {
-        fontSize: 21,
-        fontWeight: 'bold',
+        fontSize: 18,
+        fontWeight: '600',
+        fontStyle:'italic',
+        marginTop:20
     },
     userName: {
         fontWeight: '500',
         color: '#ffffff',
-        fontSize: 15,
+        fontSize: 28,
     },
     profileImage: {
         width: 50,
         height: 50,
         borderRadius: 25,
-    },
-    modalContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        borderRadius:25,
-        marginTop:190,
-    },
-    modalContent: {
-        backgroundColor: '#fff',
-        padding: 25,
-        borderRadius: 15,
-        gap:15,
-        marginBottom:200,
-        width:'80%',
+        marginTop:-30
     },
 });
 

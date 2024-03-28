@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native';
+import { View, Text, StyleSheet, Animated } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './Login';
-import { AntDesign } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -31,25 +30,25 @@ const WelcomeScreen = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <View style={{flex:1}}>
-      <View style={{backgroundColor:'#66c2ff', width:300,height:300,borderRadius:150,marginTop:-120,marginLeft:-35}}></View>
-      <View style={{backgroundColor:'#008ae6', width:300,height:300,borderRadius:150,marginLeft:-160,marginTop:-170}}></View>
+    <View style={{ flex: 1 }}>
+      <View style={{ backgroundColor: '#66c2ff', width: 300, height: 300, borderRadius: 150, marginTop: -120, marginLeft: -35 }}></View>
+      <View style={{ backgroundColor: '#008ae6', width: 300, height: 300, borderRadius: 150, marginLeft: -160, marginTop: -170 }}></View>
       <Animated.View style={{ opacity: fadeAnim }}>
-      <Text style={{fontSize:35,textAlign:'center',marginTop:70,fontWeight:'500'}}>STUDY THINGS</Text>
-      <Text style={{fontSize:15,textAlign:'center',fontWeight:'300'}}>STREAMLINED LEARNING</Text>
+        <Text style={{ fontSize: 35, textAlign: 'center', marginTop: 70, fontWeight: '500' }}>STUDY THINGS</Text>
+        <Text style={{ fontSize: 15, textAlign: 'center', fontWeight: '300' }}>STREAMLINED LEARNING</Text>
 
-      <Text style={{fontSize:10,color:'#008ae6',marginTop:290,textAlign:'center'}}>GATEWAY TO OUR KNOWLEDGE.....</Text>
+        <Text style={{ fontSize: 10, color: '#008ae6', marginTop: 290, textAlign: 'center' }}>GATEWAY TO OUR KNOWLEDGE.....</Text>
       </Animated.View>
-  </View>
+    </View>
 
   );
 };
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown:false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
-      <Stack.Screen name='loginscreen' component={Login}/>
+      <Stack.Screen name='loginscreen' component={Login} />
     </Stack.Navigator>
   );
 };
@@ -67,4 +66,3 @@ const styles = StyleSheet.create({
 });
 
 export default AppNavigator;
- 

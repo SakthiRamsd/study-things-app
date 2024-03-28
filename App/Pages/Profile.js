@@ -15,6 +15,30 @@ function Profile() {
   const menu = [
     {
       id: 1,
+      name: 'Explore',
+      path: 'home',
+      icon: 'search'
+    },
+    {
+      id: 2,
+      name: 'My Course',
+      path: 'Course',
+      icon: 'book'
+    },
+    {
+      id: 3,
+      name: 'Favorite',
+      path: 'favorite',
+      icon: 'heart'
+    },
+    {
+      id: 4,
+      name: 'Quiz',
+      path: 'quiz',
+      icon: 'bulb-outline'
+    },
+    {
+      id: 5,
       name: 'Logout',
       icon: 'log-out'
     },
@@ -33,7 +57,7 @@ function Profile() {
       const loggedOut = await client.logout();
       if (loggedOut) {
         setAuth(false)
-        Navigation.navigate('Login')
+        Navigation.navigate('loginscreen')
         // User was logged out
       }
     };
@@ -41,16 +65,16 @@ function Profile() {
 
   return (
     <View style={{ padding: 30 }}>
-      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',marginLeft:-20}}>
+      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: -20 }}>
         <TouchableOpacity onPress={() => Navigation.goBack()}>
-        <Ionicons name="arrow-undo" size={30} color="black" style={{marginTop:5,marginBottom:-10}} />
+          <Ionicons name="arrow-undo" size={30} color="black" style={{ marginTop: 5, marginBottom: -10 }} />
         </TouchableOpacity>
-    
+
         <View style={{ color: 'black', borderRadius: 8, marginTop: 28, padding: 9, margin: 3 }}>
           <Text style={{ fontSize: 21, color: 'black', fontWeight: 'bold', }}>PROFILE</Text>
         </View>
       </View>
-      
+
 
       {userDetail && <View style={{ alignItems: 'center', margin: 30, gap: 3 }}>
         <Image source={{ uri: userDetail?.picture }}
@@ -66,10 +90,12 @@ function Profile() {
           data={menu}
           renderItem={({ item, index }) => (
             <TouchableOpacity onPress={() => onMenuClick(item)}
-              style={{ display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', marginBottom: 20, backgroundColor: '#4da6ff', padding: 13, elevation: 5, borderRadius:10 }}
+              style={{ display: 'flex', flexDirection: 'row', gap: 10, alignItems: 'center', marginBottom: 20, backgroundColor: '#4da6ff', padding: 10, elevation: 5, borderRadius: 30 }}
             >
-              <Ionicons name={item.icon} size={25} color="black"/>
-              <Text style={{ fontWeight: 'bold', fontSize: 19, color:'#ffffff' }}>{item?.name}</Text>
+              <View style={{ backgroundColor: 'white', borderRadius: 99, padding: 8 }}>
+                <Ionicons name={item.icon} size={18} color="black" />
+              </View>
+              <Text style={{ fontWeight: '700', fontSize: 16, color: '#ffffff' }}>{item?.name}</Text>
             </TouchableOpacity>
           )}
         />

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { client } from './../Shared/KindConfig';
 import { AuthContext } from '../../App';
 import Swiper from 'react-native-swiper';

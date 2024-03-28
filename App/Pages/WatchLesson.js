@@ -17,7 +17,6 @@ export default function WatchLesson() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    console.log("--", userEntrollment)
     params && setSelectedChapter(params?.course?.chapter[0]);
     params && setUserEntrollment(params?.userEntrollment)
   }, [params && userEntrollment])
@@ -33,40 +32,38 @@ export default function WatchLesson() {
 
   return selectedChapter && (
 
-    <ScrollView style={{backgroundColor:'#e6e6e6',padding:13}}>
+    <ScrollView style={{ backgroundColor: '#e6e6e6', padding: 13 }}>
 
-    <View style={{ padding: 15, marginTop: 40,backgroundColor:'#ffffff',borderRadius:13}}>
+      <View style={{ padding: 15, marginTop: 40, backgroundColor: '#ffffff', borderRadius: 13 }}>
 
-      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 70 }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Ionicons name="arrow-undo" size={30} color="black" style={{marginTop:5,marginBottom:-10}} />
-        </TouchableOpacity>
+        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 70 }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-undo" size={30} color="black" style={{ marginTop: 5, marginBottom: -10 }} />
+          </TouchableOpacity>
+        </View>
+
+        {/* Video Screening */}
+        {selectedChapter && <Video
+          shouldPlay={true}
+          style={{ width: '100%', height: 240 }}
+          source={{
+            uri: selectedChapter.video?.url,
+          }}
+          useNativeControls={true}
+          resizeMode={ResizeMode.CONTAIN}
+          isLooping
+        />}
+
+        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 15, marginBottom: 10 }}>
+          <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{selectedChapter?.name}</Text>
+
+          <TouchableOpacity onPress={() => onChapterCompleted()}>
+            <Text style={{ fontSize: 15, backgroundColor: '#66c2ff', padding: 8, textAlign: 'center', fontWeight: '400', borderRadius: 8, color: 'white' }}>Mark Completed</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
-
-      {/* Video Screening */}
-      {selectedChapter && <Video
-        shouldPlay={true}
-        style={{ width: '100%', height: 240 }}
-        source={{
-          uri: selectedChapter.video?.url,
-        }}
-        useNativeControls={true}
-        resizeMode={ResizeMode.CONTAIN}
-        isLooping
-      />}
-
-      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 15,marginBottom:10}}>
-        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{selectedChapter?.name}</Text>
-
-        <TouchableOpacity onPress={() => onChapterCompleted()}>
-          <Text style={{ fontSize: 15, backgroundColor: '#66c2ff', padding: 8, textAlign: 'center', fontWeight: '400',borderRadius:8 }}>Mark Completed</Text>
-        </TouchableOpacity>
-      </View>
-
-      
-
-    </View>
-    <LessonInfo
+      <LessonInfo
         course={course}
         userEntrollment={userEntrollment}
         onChapterSelect={(chapter) => setSelectedChapter(chapter)}
