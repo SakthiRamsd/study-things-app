@@ -40,9 +40,7 @@ function FavoriteScreen({course}) {
       <View style={{ justifyContent: 'center', flexShrink: 2, gap: 8}}>
         <Text numberOfLines={3} style={{ color: 'black', fontSize: 12.5, fontWeight: 'bold', }}>{item.name}</Text>
         <Text numberOfLines={1} style={{ color: 'black', fontSize: 13, fontStyle: 'italic' }}>{item.author}</Text>
-
       </View>
-
     </TouchableOpacity>
   );
 

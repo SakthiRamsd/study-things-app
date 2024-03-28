@@ -6,7 +6,6 @@ import WelcomeScreen from './App/Pages/WelcomeScreen';
 import AppNavigation from './App/Navigation/AppNavigation';
 
 
-
 export const AuthContext = createContext();
 export const userDeatailsContext = createContext();
 export const ReloadContext = createContext();

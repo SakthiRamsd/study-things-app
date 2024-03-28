@@ -46,7 +46,6 @@ const getCourseList = async () => {
           }
         }
       }
-      premium
     }
   }
    `

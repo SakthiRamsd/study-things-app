@@ -23,7 +23,7 @@ function CategoryList({ categories }) {
 
   // Check if categories is undefined or null
   if (!categories) {
-    return null; // or display a loading indicator or some default content
+    return null;
   }
 
   return (

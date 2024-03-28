@@ -1,11 +1,12 @@
 import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
-
 import CourseStart from '../Component/CourseStart';
 import EntrollSection from '../Component/EntrollSection';
 import { ReloadContext, userDeatailsContext } from '../../App';
 import GlobalApi from '../Shared/GlobalApi';
+import QuizScreen from './QuizScreen';
+import Course from './Course';
 
 
 export default function CourseDetails() {
@@ -45,6 +46,7 @@ export default function CourseDetails() {
     })
   }
 
+
   return (
     <ScrollView style={{ flex:1,backgroundColor:'#e6e6e6',padding: 15, marginTop: 35 }}>
       <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 70 }}>
@@ -63,6 +65,7 @@ export default function CourseDetails() {
           course: course,
           userEntrollment: userEntrollment
         })} />
+
 
     </ScrollView>
   )

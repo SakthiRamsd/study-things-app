@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 function SearchResult({ route }) {
   const { searchQuery } = route.params;
   const [searchResults, setSearchResults] = useState([]);
-  const navigation=useNavigation()
+  const navigation = useNavigation()
 
   useEffect(() => {
     // Fetch and filter course list based on search query
@@ -23,12 +23,12 @@ function SearchResult({ route }) {
   }, [searchQuery]);
 
   return (
-    <View style={{display:'flex',marginTop:25}}>
-      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',marginLeft:10}}>
+    <View style={{ display: 'flex', marginTop: 25 }}>
+      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Ionicons name="arrow-undo" size={30} color="black" style={{marginTop:5,marginBottom:-10}} />
+          <Ionicons name="arrow-undo" size={30} color="black" style={{ marginTop: 5, marginBottom: -10 }} />
         </TouchableOpacity>
-    
+
         <View style={{ color: 'black', borderRadius: 8, marginTop: 30, padding: 9, margin: 3 }}>
           <Text style={{ fontSize: 21, color: 'black', fontWeight: 'bold', }}>Search Results for : {searchQuery}</Text>
         </View>
@@ -37,7 +37,7 @@ function SearchResult({ route }) {
         data={searchResults}
         renderItem={({ item }) => <CourseItemVertical course={item} />}
         keyExtractor={item => item.id.toString()}
-        style={{marginBottom:50}}
+        style={{ marginBottom: 50 }}
       />
     </View>
   );

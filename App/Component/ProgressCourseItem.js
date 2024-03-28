@@ -8,12 +8,7 @@ export default function ProgressCourseItem({ course, completedChapter }) {
 
   const navigation = useNavigation();
 
-  useEffect(() => {
-
-  }, [])
-
   const calculatePerCompleted = () => {
-
     const perc = (completedChapter / course?.chapter?.length)
     return perc.toFixed(2);
   }

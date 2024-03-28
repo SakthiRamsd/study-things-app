@@ -13,8 +13,8 @@ function CourseList({ courseList }) {
       <Carousel
         data={courseList}
         renderItem={renderItem}
-        sliderWidth={350}
-        itemWidth={300}
+        sliderWidth={360}
+        itemWidth={290}
         layout={'default'}
         loop={true}
         autoplay={true}

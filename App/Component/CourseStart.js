@@ -1,11 +1,10 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, Share } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Video, ResizeMode } from 'expo-av';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { Entypo } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+
 
 
 export default function CourseStart({ course }) {
